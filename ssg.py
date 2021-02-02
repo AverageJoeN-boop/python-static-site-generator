@@ -1,5 +1,2 @@
-import Typer
+import typer
 from ssg.site import Site
-
-
-def 
