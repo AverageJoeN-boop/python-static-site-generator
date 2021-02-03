@@ -1,4 +1,9 @@
 import shutil
+import sys
+
+from docutils.core import publish_parts
+from markdown import markdown
+from ssg.content import Content
 from typing import List
 from pathlib import Path
 
@@ -32,4 +37,10 @@ class ResourceParser(Parser):
         raise NotImplementedError
 
     Parser.copy(path, source, dest)
+
+class MarkdownParser(Parser):
+    extensions = [".md", ".markdown"]
+
+    def parse(self, path: Path, source: Path, dest: Path):
+        content = Content.load(self.read(path))
 
